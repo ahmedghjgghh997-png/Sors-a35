@@ -144,8 +144,8 @@ if [ -d "$PWD/patches" ]; then
 fi
 
 echo -e "${GREEN}=== المرحلة 8: ترجمة النواة ===${NC}"
-# --- الدرع الواقي الشامل (تمت إضافة حل مشكلة الميديا VLA و Fallthrough) ---
-export SHIELD_FLAGS="-w -Wno-error -Wno-implicit-function-declaration -Wno-implicit-int -Wno-incompatible-pointer-types -Wno-pointer-sign -Wno-vla -Wno-int-conversion -Wno-return-type -Wno-implicit-fallthrough -fgnu89-inline"
+# --- الدرع الواقي لتجاهل جميع أنواع أخطاء سامسونج ---
+export SHIELD_FLAGS="-w -Wno-error -Wno-implicit-function-declaration -Wno-implicit-int -Wno-incompatible-pointer-types -Wno-pointer-sign"
 export KCPPFLAGS="-Wno-error"
 
 make -j$(nproc) ARCH=arm64 LLVM=1 LLVM_IAS=1 CROSS_COMPILE=aarch64-none-linux-gnu- KCFLAGS="$SHIELD_FLAGS" KCPPFLAGS="$KCPPFLAGS" Image
